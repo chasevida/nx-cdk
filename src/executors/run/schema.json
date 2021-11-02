@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "title": "Run",
+  "description": "Run cdk command",
+  "type": "object",
+  "properties": {
+    "command": {
+      "type": "string",
+      "description": "CDK command to be run, eg context, synth, bootstrap"
+    },
+    "parameters": {
+      "type": "array",
+      "description": "Parameters for the given command, eg list of stacks",
+      "default": [],
+      "items": {
+        "type": "string"
+      },
+      "alias": "stacks"
+    },
+    "options": {
+      "type": "string",
+      "description": "Options to pass to cdk"
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "Emits the synthesized cloud assembly into a directory"
+    }
+  },
+  "required": ["command"]
+}

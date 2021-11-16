@@ -12,8 +12,10 @@ function runExecutor(options, context) {
         const binPath = `${appPath}/bin/${context.projectName}.ts`;
         const outPath = options.outputPath || `dist/apps/${context.projectName}`;
         const profile = (options === null || options === void 0 ? void 0 : options.profile) ? `--profile ${options.profile}` : '';
+        const stage = (options === null || options === void 0 ? void 0 : options.stage) ? `stage=${options.stage}` : '';
+        const ctx = stage ? `--context='${stage}'` : '';
         const app = `--app "npx ts-node --prefer-ts-exts ${binPath}"`;
-        const cmd = `cdk ${options.command} ${app} ${parameters} ${opt} -o ${outPath} ${profile}`;
+        const cmd = `cdk ${options.command} ${app} ${parameters} ${opt} -o ${outPath} ${ctx} ${profile}`;
         return (0, nx_exec_1.runExecutor)({
             command: cmd,
             cwd: projectRoot,
